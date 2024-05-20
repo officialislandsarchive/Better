@@ -4,7 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Price Submission</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://cdn.discordapp.com/attachments/1091908728992837704/1242200006220578836/Webp.png?ex=664cf868&is=664ba6e8&hm=62fb6a79b3dc9f5823a59f377bc20ef6632b900a1ecdcaf924b7e354b576fdb2&');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ensure background covers entire viewport */
+        }
+        .banner {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            text-align: center;
+        }
+        .banner h1 {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .delay-message {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     <div class="banner">
@@ -23,43 +85,14 @@
             <br>
             <button type="submit">Submit</button>
         </form>
-        <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
     </div>
 
     <script>
     document.getElementById('priceForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const productName = document.getElementById('productName').value;
-        const allowedNames = [
-            "Wheat", "Tomato", "Carrot", "Berry", "Onion", "Red Flowers", "Yellow Flowers", "Blue Flowers", "Tall Grass",
-            "Stone", "Stone Brick", "Wood", "Wood Plank", "Pine Wood", "Pine Wiid Plank", "Grass Block", "Glass Pane",
-            "Glass Pane (Colored)", "Clay", "Clay (Colored)", "Red Rug", "Wood Stairs", "Pine Stairs", "Stone Stairs",
-            "Brick Stairs", "Wood Fence", "Pine Fence", "Ladder", "Pine Door", "Stone Totem", "Coal Totem", "Iron Totem",
-            "Clay Totem", "Wheat Totem", "Tomato Totem", "Carrot Totem", "Onion Totem", "Medium Chest", "Steel Rod",
-            "Conveyor Belt", "Left Conveyor", "Right Conveyor", "Industrial Chest", "Industrial Oven", "Industrial Sawmill",
-            "Industrial Smelter", "Workbench Tier 1", "Workbench Tier 2", "Anvil", "Sawmill", "Stonecutter", "Coloring Station",
-            "Camfire", "Cooking Table", "Floral Bench", "Small Furnace", "Small Chest", "Dough", "Berry Dough", "Bread",
-            "Berry Pie", "Wheat Seeds", "Tomato Seeds", "Carrot Seeds", "Berry Seeds", "Onion Seeds", "Red Flower Seeds",
-            "Yellow Flower Seeds", "Blue Flower Seeds", "Sapling", "Pine Sapling", "Green Slime Balls", "Blue Slime Balls",
-            "Pink Slime Balls", "Green Gear", "Blue Gear", "Pink Gear", "Wooden Axe", "Wooden Pickaxe", "Wooden Sword", "Plow", "Stone Axe", "Stone Pickaxe", "Iron Axe", "Iron Pickaxe", "Coal", "Iron Ore", "Iron"
-        ];
-
-        // Check if the submitted product name is in the allowed names list
-        const isAllowed = allowedNames.some(name => {
-            // Use a case-insensitive comparison
-            return productName.toLowerCase() === name.toLowerCase();
-        });
-
-        if (isAllowed) {
-            // Product name
-            // Product name is allowed, you can proceed with submitting the form
-            alert('Price submitted successfully!');
-            document.getElementById('priceForm').reset();
-        } else {
-            // Product name is not allowed, show a warning
-            alert('Error: Product name is not allowed.');
-        }
+        alert('Price submitted successfully!');
+        document.getElementById('priceForm').reset();
     });
     </script>
 </body>
