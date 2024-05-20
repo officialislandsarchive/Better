@@ -4,26 +4,10 @@ document.getElementById('priceForm').addEventListener('submit', function(e) {
     const productName = document.getElementById('productName').value;
     const productPrice = document.getElementById('productPrice').value;
 
-    const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB';
+    const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB'; // Replace with your Discord webhook URL
 
     const payload = {
-        embeds: [{
-            title: "New Price Submission",
-            color: 16711680, // Red color
-            fields: [
-                {
-                    name: "Product",
-                    value: productName,
-                    inline: true
-                },
-                {
-                    name: "Price",
-                    value: `$${productPrice}`,
-                    inline: true
-                }
-            ],
-            timestamp: new Date()
-        }]
+        content: `New price submission:\nProduct: ${productName}\nPrice: $${productPrice}`
     };
 
     fetch(webhookURL, {
@@ -43,3 +27,4 @@ document.getElementById('priceForm').addEventListener('submit', function(e) {
         alert('Error submitting price: ' + error);
     });
 });
+
