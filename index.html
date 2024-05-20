@@ -4,36 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Price Submission</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="banner">
-        <h1>Welcome to our Price Submission Center</h1>
-        <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
-    </div>
-    
     <div class="container">
-        <form id="priceForm">
-            <h2>Submit Prices</h2>
-            <label for="productName">Product Name:</label>
-            <input type="text" id="productName" name="productName" required>
-            <br>
-            <label for="productPrice">Price:</label>
-            <input type="number" id="productPrice" name="productPrice" required>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-        <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
+        <div class="banner">
+            <h1>Welcome to our Price Submission Center</h1>
+            <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="priceForm">
+                <h2>Submit Prices</h2>
+                <div class="form-group">
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" name="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price:</label>
+                    <input type="number" id="productPrice" name="productPrice" required>
+                </div>
+                <button type="submit">Submit</button>
+                <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
+            </form>
+        </div>
     </div>
 
     <script>
-    document.getElementById('priceForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+        $(document).ready(function() {
+            $('#priceForm').submit(function(e) {
+                e.preventDefault();
+                var productName = $('#productName').val();
+                var productPrice = $('#productPrice').val();
 
-        // Proceed with submitting the form
-        alert('Price submitted successfully!');
-        document.getElementById('priceForm').reset();
-    });
+                // Your webhook URL
+                var webhookUrl = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB';
+
+                // Data to send to the webhook
+                var data = {
+                    productName: productName,
+                    productPrice: productPrice
+                };
+
+                // Send data to the webhook using AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: webhookUrl,
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        // Handle successful response
+                        alert('Price submitted successfully!');
+                        $('#priceForm').trigger('reset');
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error
+                        alert('Error: Failed to submit price.');
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
