@@ -1,3 +1,6 @@
+Sure, here's the complete HTML code with the modification to redirect the user to the main page after clicking the "Sign In" button:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,13 +151,10 @@
 
     <script>
         function signIn() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
             // Your sign-in logic here
-            // For demonstration, let's just redirect to the price form page
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('priceFormContainer').style.display = 'block';
+            
+            // Redirect to the main page after successful sign-in
+            window.location.href = "main_page.html"; // Replace "main_page.html" with the URL of your main page
         }
 
         function signUp() {
@@ -176,7 +176,7 @@
         }
 
         function sendNotification(message) {
-            const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50ML
+            const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB';
             const payload = {
                 content: message
             };
