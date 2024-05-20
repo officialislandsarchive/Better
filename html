@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Submission</title>
+    <style>
+        /* Your existing CSS styles */
+    </style>
+</head>
+<body>
+    <div id="loginForm" class="container">
+        <h2>Sign In</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button onclick="signIn()">Sign In</button>
+    </div>
+
+    <div id="priceFormContainer" style="display: none;">
+        <!-- Your existing price submission form goes here -->
+    </div>
+
+    <script>
+        function signIn() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            // You can add your authentication logic here
+            // For simplicity, I'll use a hardcoded username and password
+            if (username === 'admin' && password === 'password') {
+                // Show the price submission form if authentication succeeds
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('priceFormContainer').style.display = 'block';
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+    </script>
+</body>
+</html>
