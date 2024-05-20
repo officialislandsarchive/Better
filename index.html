@@ -81,6 +81,8 @@
         <input type="password" id="password" name="password" required>
         <br>
         <button onclick="signIn()">Sign In</button>
+        <br>
+        <button onclick="toggleSignUpForm()">Sign Up</button>
     </div>
 
     <div id="registrationForm" class="container" style="display: none;">
@@ -92,6 +94,8 @@
         <input type="password" id="newPassword" name="newPassword" required>
         <br>
         <button onclick="signUp()">Sign Up</button>
+        <br>
+        <button onclick="toggleSignInForm()">Back to Sign In</button>
     </div>
 
     <div id="priceFormContainer" class="container" style="display: none;">
@@ -145,6 +149,16 @@
             }).catch(error => {
                 console.error('Error sending notification:', error);
             });
+        }
+
+        function toggleSignUpForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registrationForm').style.display = 'block';
+        }
+
+        function toggleSignInForm() {
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
         }
 
         document.getElementById('priceForm').addEventListener('submit', function(e) {
