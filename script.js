@@ -26,9 +26,6 @@ document.getElementById('priceForm').addEventListener('submit', function(e) {
         }]
     };
 
-    const submitButton = document.querySelector('button[type="submit"]');
-    submitButton.disabled = true; // Disable the submit button
-
     fetch(webhookURL, {
         method: 'POST',
         headers: {
@@ -44,10 +41,5 @@ document.getElementById('priceForm').addEventListener('submit', function(e) {
         }
     }).catch(error => {
         alert('Error submitting price: ' + error);
-    }).finally(() => {
-        // Enable the submit button after a delay (e.g., 10 seconds)
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 25000); // 10000 milliseconds = 10 seconds
     });
 });
