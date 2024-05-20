@@ -79,11 +79,11 @@
     </style>
 </head>
 <body>
+    <div class="banner">
+        <h2>Welcome to our Price Submission Center</h2>
+        <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
+    </div>
     <div class="container">
-        <div class="banner">
-            <h2>Welcome to our Price Submission Center</h2>
-            <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
-        </div>
         <form id="priceForm">
             <h2>Submit Prices</h2>
             <label for="productName">Product Name:</label>
@@ -140,9 +140,11 @@
                     alert('Error submitting price.');
                 }
             }).catch(error => {
-                alert('Error submitting price: ' + error);
+                alert('
+                      Error submitting price: ' + error);
             });
         });
     </script>
 </body>
 </html>
+
