@@ -4,67 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Price Submission</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://cdn.discordapp.com/attachments/1091908728992837704/1242200006220578836/Webp.png?ex=664cf868&is=664ba6e8&hm=62fb6a79b3dc9f5823a59f377bc20ef6632b900a1ecdcaf924b7e354b576fdb2&');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ensure background covers entire viewport */
+        }
+        .banner {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .banner h1 {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .delay-message {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
+    <div class="banner">
+        <h1>Welcome to our Price Submission Center</h1>
+        <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
+    </div>
+    
     <div class="container">
-        <div class="banner">
-            <h1>Welcome to our Price Submission Center</h1>
-            <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
-        </div>
-        
-        <div class="form-container">
-            <form id="priceForm">
-                <h2>Submit Prices</h2>
-                <div class="form-group">
-                    <label for="productName">Product Name:</label>
-                    <input type="text" id="productName" name="productName" required>
-                </div>
-                <div class="form-group">
-                    <label for="productPrice">Price:</label>
-                    <input type="number" id="productPrice" name="productPrice" required>
-                </div>
-                <button type="submit">Submit</button>
-                <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
-            </form>
-        </div>
+        <form id="priceForm">
+            <h2>Submit Prices</h2>
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" required>
+            <br>
+            <label for="productPrice">Price:</label>
+            <input type="number" id="productPrice" name="productPrice" required>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 
     <script>
-        $(document).ready(function() {
-            $('#priceForm').submit(function(e) {
-                e.preventDefault();
-                var productName = $('#productName').val();
-                var productPrice = $('#productPrice').val();
+    document.getElementById('priceForm').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-                // Your webhook URL
-                var webhookUrl = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB';
-
-                // Data to send to the webhook
-                var data = {
-                    productName: productName,
-                    productPrice: productPrice
-                };
-
-                // Send data to the webhook using AJAX
-                $.ajax({
-                    type: 'POST',
-                    url: webhookUrl,
-                    data: JSON.stringify(data),
-                    contentType: 'application/json',
-                    success: function(response) {
-                        // Handle successful response
-                        alert('Price submitted successfully!');
-                        $('#priceForm').trigger('reset');
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle error
-                        alert('Error: Failed to submit price.');
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
-        });
+        alert('Price submitted successfully!');
+        document.getElementById('priceForm').reset();
+    });
     </script>
 </body>
 </html>
