@@ -4,106 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Price Submission Center</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: radial-gradient(circle at center, #40556F, #1D2C42);
+            color: #fff;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            color: #fff;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background-color: rgba(0, 0, 0, 0.6);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-        .navbar a:hover {
-            color: #00adb5;
-        }
-        .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            text-align: center;
         }
-        .card {
+        .container {
+            max-width: 700px;
+            padding: 30px;
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 50px;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .banner {
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
         }
         h1 {
-            font-size: 48px;
-            color: #00adb5;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
         p {
-            font-size: 20px;
-            line-height: 1.5;
-        }
-        .search-bar {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-        .search-bar input {
-            width: 80%;
-            padding: 10px;
-            border: none;
-            border-radius: 20px;
-            outline: none;
             font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
-        .profile-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
             border-radius: 10px;
-            margin: 20px;
-            display: inline-block;
-        }
-        .profile-card img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            margin-bottom: 15px;
-        }
-        .profile-card h2 {
-            font-size: 22px;
-            margin: 10px 0;
-        }
-        .profile-card p {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
             font-size: 16px;
-            color: #bbb;
+            outline: none;
         }
         button {
-            background-color: #00adb5;
+            background-color: #00b894;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 20px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 18px;
+            font-weight: bold;
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #008b8b;
+            background-color: #018450;
+        }
+        .delay-message {
+            font-size: 16px;
+        }
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
         }
         .modal {
             display: none;
@@ -137,72 +120,141 @@
             top: 10px;
             right: 10px;
         }
-        .particle {
-            position: absolute;
-            background-color: #fff;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            opacity: 0.7;
-        }
     </style>
 </head>
 <body>
-
-    <div class="navbar">
-        <a href="#">Home</a>
-        <a href="#">Profile</a>
-        <a href="#">Submit</a>
-        <a href="#">Contact</a>
-    </div>
-
     <div class="container">
-        <div class="card">
-            <h1>Price Submission Center</h1>
-            <p>Welcome to our price submission platform. Help us keep our prices accurate and up-to-date!</p>
-
-            <div class="search-bar">
-                <input type="text" id="productSearch" placeholder="Search for a product...">
-            </div>
-
-            <div class="profile-card">
-                <img src="https://via.placeholder.com/100" alt="Profile Picture">
-                <h2>John Doe</h2>
-                <p>Guild Member</p>
-            </div>
-
-            <button onclick="openModal()">Submit a Price</button>
+        <div class="banner">
+            <h1>🚀 Welcome to our Price Submission Center 🚀</h1>
+            <p>Your solution for updating prices within our guild. Contribute to our price guide and keep our information accurate and up-to-date!</p>
         </div>
-    </div>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
+        <div id="priceFormContainer">
             <form id="priceForm">
                 <h2>Submit Prices</h2>
                 <label for="productName">Product Name:</label>
-                <input type="text" id="productName" name="productName" placeholder="Enter product name" required>
+                <select id="productName" name="productName" required>
+                    <option value="">Select a product...</option>
+                    <option value="Wheat">Wheat</option>
+                    <option value="Tomato">Tomato</option>
+                    <option value="Carrot">Carrot</option>
+                    <option value="Berry">Berry</option>
+                    <option value="Onion">Onion</option>
+                    <option value="Red Flowers">Red Flowers</option>
+                    <option value="Yellow Flowers">Yellow Flowers</option>
+                    <option value="Blue Flowers">Blue Flowers</option>
+                    <option value="Tall Grass">Tall Grass</option>
+                    <option value="Stone">Stone</option>
+                    <option value="Stone Brick">Stone Brick</option>
+                    <option value="Wood">Wood</option>
+                    <option value="Wood Plank">Wood Plank</option>
+                    <option value="Pine Wood">Pine Wood</option>
+                    <option value="Pine Wood Plank">Pine Wood Plank</option>
+                    <option value="Grass Block">Grass Block</option>
+                    <option value="Glass Pane">Glass Pane</option>
+                    <option value="Glass Pane (Colored)">Glass Pane (Colored)</option>
+                    <option value="Clay">Clay</option>
+                    <option value="Clay (Colored)">Clay (Colored)</option>
+                    <option value="Red Rug">Red Rug</option>
+                    <option value="Wood Stairs">Wood Stairs</option>
+                    <option value="Pine Stairs">Pine Stairs</option>
+                    <option value="Stone Stairs">Stone Stairs</option>
+                    <option value="Brick Stairs">Brick Stairs</option>
+                    <option value="Wood Fence">Wood Fence</option>
+                    <option value="Pine Fence">Pine Fence</option>
+                    <option value="Ladder">Ladder</option>
+                    <option value="Pine Door">Pine Door</option>
+                    <option value="Stone Totem">Stone Totem</option>
+                    <option value="Coal Totem">Coal Totem</option>
+                    <option value="Iron Totem">Iron Totem</option>
+                    <option value="Clay Totem">Clay Totem</option>
+                    <option value="Wheat Totem">Wheat Totem</option>
+                    <option value="Tomato Totem">Tomato Totem</option>
+                    <option value="Carrot Totem">Carrot Totem</option>
+                    <option value="Onion Totem">Onion Totem</option>
+                    <option value="Medium Chest">Medium Chest</option>
+                    <option value="Steel Rod">Steel Rod</option>
+                    <option value="Conveyor Belt">Conveyor Belt</option>
+                    <option value="Left Conveyor">Left Conveyor</option>
+                    <option value="Right Conveyor">Right Conveyor</option>
+                    <option value="Industrial Chest">Industrial Chest</option>
+                    <option value="Industrial Oven">Industrial Oven</option>
+                    <option value="Industrial Sawmill">Industrial Sawmill</option>
+                    <option value="Industrial Smelter">Industrial Smelter</option>
+                    <option value="Workbench Tier 1">Workbench Tier 1</option>
+                    <option value="Workbench Tier 2">Workbench Tier 2</option>
+                    <option value="Anvil">Anvil</option>
+                    <option value="Sawmill">Sawmill</option>
+                    <option value="Stonecutter">Stonecutter</option>
+                    <option value="Coloring Station">Coloring Station</option>
+                    <option value="Campfire">Campfire</option>
+                    <option value="Cooking Table">Cooking Table</option>
+                    <option value="Floral Bench">Floral Bench</option>
+                    <option value="Small Furnace">Small Furnace</option>
+                    <option value="Small Chest">Small Chest</option>
+                    <option value="Dough">Dough</option>
+                    <option value="Berry Dough">Berry Dough</option>
+                    <option value="Bread">Bread</option>
+                    <option value="Berry Pie">Berry Pie</option>
+                    <option value="Wheat Seeds">Wheat Seeds</option>
+                    <option value="Tomato Seeds">Tomato Seeds</option>
+                    <option value="Carrot Seeds">Carrot Seeds</option>
+                    <option value="Berry Seeds">Berry Seeds</option>
+                    <option value="Onion Seeds">Onion Seeds</option>
+                    <option value="Red Flower Seeds">Red Flower Seeds</option>
+                    <option value="Yellow Flower Seeds">Yellow Flower Seeds</option>
+                    <option value="Blue Flower Seeds">Blue Flower Seeds</option>
+                    <option value="Sapling">Sapling</option>
+                    <option value="Pine Sapling">Pine Sapling</option>
+                    <option value="Green Slime Balls">Green Slime Balls</option>
+                    <option value="Blue Slime Balls">Blue Slime Balls</option>
+                    <option value="Pink Slime Balls">Pink Slime Balls</option>
+                    <option value="Green Gear">Green Gear</option>
+                    <option value="Blue Gear">Blue Gear</option>
+                    <option value="Pink Gear">Pink Gear</option>
+                    <option value="Wooden Axe">Wooden Axe</option>
+                    <option value="Wooden Pickaxe">Wooden Pickaxe</option>
+                    <option value="Wooden Sword">Wooden Sword</option>
+                    <option value="Plow">Plow</option>
+                    <option value="Stone Axe">Stone Axe</option>
+                    <option value="Stone Pickaxe">Stone Pickaxe</option>
+                    <option value="Iron Axe">Iron Axe</option>
+                    <option value="Iron Pickaxe">Iron Pickaxe</option>
+                    <option value="Coal">Coal</option>
+                    <option value="Iron Ore">Iron Ore</option>
+                    <option value="Iron">Iron</option>
+                </select>
                 <label for="productPrice">Price:</label>
-                <input type="number" id="productPrice" name="productPrice" placeholder="Enter price" required>
+                <input type="number" id="productPrice" name="productPrice" required>
                 <button type="submit">Submit</button>
             </form>
+            <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <h2>Submission Confirmation</h2>
+            <p id="confirmationMessage"></p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
     <script>
-        const modal = document.getElementById('modal');
-
-        function openModal() {
-            modal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-        }
+        let lastSubmissionTime = 0;
 
         document.getElementById('priceForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            const currentTime = new Date().getTime();
+            if (currentTime - lastSubmissionTime < 25000) {
+                alert('Please wait 25 seconds between submissions.');
+                return;
+            }
+
+            lastSubmissionTime = currentTime;
+
             const productName = document.getElementById('productName').value;
             const productPrice = document.getElementById('productPrice').value;
             const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB';
@@ -225,6 +277,7 @@
                     timestamp: new Date()
                 }]
             };
+
             fetch(webhookURL, {
                 method: 'POST',
                 headers: {
@@ -233,29 +286,26 @@
                 body: JSON.stringify(payload)
             }).then(response => {
                 if (response.ok) {
-                    alert('Price submitted successfully!');
+                    document.getElementById('confirmationMessage').textContent = 'Price submitted successfully!';
                     document.getElementById('priceForm').reset();
-                    closeModal();
+                    openModal();
                 } else {
-                    alert('Error submitting price.');
+                    document.getElementById('confirmationMessage').textContent = 'Error submitting price.';
+                    openModal();
                 }
             }).catch(error => {
-                alert('Error submitting price: ' + error);
+                document.getElementById('confirmationMessage').textContent = 'Error submitting price: ' + error;
+                openModal();
             });
         });
 
-        function createParticles() {
-            const particleCount = 100;
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
-                document.body.appendChild(particle);
-            }
+        function openModal() {
+            document.getElementById('confirmationModal').style.display = 'flex';
         }
-        createParticles();
+
+        function closeModal() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>
