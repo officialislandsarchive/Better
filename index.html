@@ -121,8 +121,7 @@
                 <label for="newUsername">New Username:</label>
                 <input type="text" id="newUsername" name="newUsername" required>
                 <br>
-                <label
-for="newPassword">New Password:</label>
+                <label for="newPassword">New Password:</label>
                 <input type="password" id="newPassword" name="newPassword" required>
                 <br>
                 <button onclick="signUp()">Sign Up</button>
@@ -149,7 +148,13 @@ for="newPassword">New Password:</label>
 
     <script>
         function signIn() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
             // Your sign-in logic here
+            // For demonstration, let's just redirect to the price form page
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('priceFormContainer').style.display = 'block';
         }
 
         function signUp() {
@@ -171,7 +176,7 @@ for="newPassword">New Password:</label>
         }
 
         function sendNotification(message) {
-            const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB';
+            const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50ML
             const payload = {
                 content: message
             };
