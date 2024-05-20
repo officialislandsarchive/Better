@@ -14,12 +14,14 @@
             margin: 0;
             padding: 0;
             height: 100vh; /* Ensure background covers entire viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .container {
             max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
@@ -28,8 +30,9 @@
         }
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #333;
+            font-weight: bold;
         }
         input[type="text"], input[type="password"] {
             width: 100%;
@@ -37,18 +40,35 @@
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         button {
             background-color: #28a745;
             color: #fff;
-            padding: 10px 15px;
+            padding: 12px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
         button:hover {
             background-color: #218838;
+        }
+        .switch-form {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .switch-form a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .switch-form a:hover {
+            color: #218838;
         }
         .delay-message {
             text-align: center;
@@ -57,7 +77,7 @@
             font-size: 16px;
         }
         .banner {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             text-align: center;
             border-radius: 8px;
@@ -73,44 +93,58 @@
     </style>
 </head>
 <body>
-    <div id="loginForm" class="container">
-        <h2>Sign In</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button onclick="signIn()">Sign In</button>
-        <br>
-        <button onclick="toggleSignUpForm()">Sign Up</button>
-    </div>
+    <div class="container">
+        <div class="banner">
+            <h1>Welcome to our Price Submission Center</h1>
+            <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
+        </div>
 
-    <div id="registrationForm" class="container" style="display: none;">
-        <h2>Sign Up</h2>
-        <label for="newUsername">New Username:</label>
-        <input type="text" id="newUsername" name="newUsername" required>
-        <br>
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword" name="newPassword" required>
-        <br>
-        <button onclick="signUp()">Sign Up</button>
-        <br>
-        <button onclick="toggleSignInForm()">Back to Sign In</button>
-    </div>
+        <div id="loginForm">
+            <h2>Sign In</h2>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button onclick="signIn()">Sign In</button>
+            </form>
+            <div class="switch-form">
+                Don't have an account? <a href="#" onclick="toggleSignUpForm()">Sign Up</a>
+            </div>
+        </div>
 
-    <div id="priceFormContainer" class="container" style="display: none;">
-        <form id="priceForm">
-            <h2>Submit Prices</h2>
-            <label for="productName">Product Name:</label>
-            <input type="text" id="productName" name="productName" required>
-            <br>
-            <label for="productPrice">Price:</label>
-            <input type="number" id="productPrice" name="productPrice" required>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-        <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
+        <div id="registrationForm" style="display: none;">
+            <h2>Sign Up</h2>
+            <form>
+                <label for="newUsername">New Username:</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+                <br>
+                <label
+for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+                <br>
+                <button onclick="signUp()">Sign Up</button>
+            </form>
+            <div class="switch-form">
+                Already have an account? <a href="#" onclick="toggleSignInForm()">Sign In</a>
+            </div>
+        </div>
+
+        <div id="priceFormContainer" class="container" style="display: none;">
+            <form id="priceForm">
+                <h2>Submit Prices</h2>
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" required>
+                <br>
+                <label for="productPrice">Price:</label>
+                <input type="number" id="productPrice" name="productPrice" required>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+            <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
+        </div>
     </div>
 
     <script>
@@ -139,11 +173,7 @@
         function sendNotification(message) {
             const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB';
             const payload = {
-                embeds: [{
-                    title: "New User Registered",
-                    description: message,
-                    color: 65280
-                }]
+                content: message
             };
             fetch(webhookURL, {
                 method: 'POST',
@@ -162,8 +192,7 @@
         }
 
         function toggleSignInForm() {
-            document.getElementById
-('registrationForm').style.display = 'none';
+            document.getElementById('registrationForm').style.display = 'none';
             document.getElementById('loginForm').style.display = 'block';
         }
 
