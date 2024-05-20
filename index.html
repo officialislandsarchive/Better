@@ -7,26 +7,39 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-image: url('https://cdn.discordapp.com/attachments/1091908728992837704/1242200006220578836/Webp.png?ex=664cf868&is=664ba6e8&hm=62fb6a79b3dc9f5823a59f377bc20ef6632b900a1ecdcaf924b7e354b576fdb2&');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            text-align: center;
+        }
+        .banner h1 {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
             margin: 0;
         }
-        h1 {
-            color: #333;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
         form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         label {
             display: block;
             margin-bottom: 8px;
-            color: #555;
+            color: #333;
         }
         input[type="text"], input[type="number"] {
             width: 100%;
@@ -42,21 +55,49 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            animation: pulse 25s infinite;
         }
         button:hover {
             background-color: #218838;
         }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .delay-message {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
-    <form id="priceForm">
-        <h1>Submit Prices</h1>
-        <label for="productName">Product Name:</label>
-        <input type="text" id="productName" name="productName" required>
-        <label for="productPrice">Price:</label>
-        <input type="number" id="productPrice" name="productPrice" required>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="banner">
+        <h1>Welcome to our Price Submission Center</h1>
+        <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
+    </div>
+    
+    <div class="container">
+        <form id="priceForm">
+            <h2>Submit Prices</h2>
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" required>
+            <br>
+            <label for="productPrice">Price:</label>
+            <input type="number" id="productPrice" name="productPrice" required>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
+    </div>
 
     <script src="script.js"></script>
 </body>
