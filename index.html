@@ -6,108 +6,104 @@
     <title>Price Submission</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://cdn.discordapp.com/attachments/1091908728992837704/1242200006220578836/Webp.png?ex=664cf868&is=664ba6e8&hm=62fb6a79b3dc9f5823a59f377bc20ef6632b900a1ecdcaf924b7e354b576fdb2&');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: radial-gradient(circle at center, #40556F, #1D2C42);
+            color: #fff;
             margin: 0;
             padding: 0;
-            height: 100vh; /* Ensure background covers entire viewport */
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
         }
         .container {
-            max-width: 400px;
+            max-width: 600px;
             padding: 30px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .banner {
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
         form {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         label {
             display: block;
+            font-size: 18px;
             margin-bottom: 10px;
-            color: #333;
-            font-weight: bold;
         }
-        input[type="text"], input[type="password"] {
+        input[type="text"], input[type="password"], input[type="number"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            font-size: 16px;
+            outline: none;
         }
         button {
-            background-color: #28a745;
+            background-color: #00b894;
             color: #fff;
-            padding: 12px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
-            width: 100%;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #218838;
-        }
-        .switch-form {
-            margin-top: 20px;
-            font-size: 14px;
-            text-align: center;
-        }
-        .switch-form a {
-            color: #333;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .switch-form a:hover {
-            color: #218838;
+            background-color: #018450;
         }
         .delay-message {
-            text-align: center;
-            margin-top: 20px;
-            color: #333;
             font-size: 16px;
         }
-        .banner {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
-        .banner h1 {
-            color: #333;
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="banner">
-            <h1>Welcome to our Price Submission Center</h1>
-            <p>Your solution for updating prices within our guild. Feel free to contribute to our price guide and help us maintain accurate and up-to-date information.</p>
+            <h1>🚀 Welcome to our Price Submission Center 🚀</h1>
+            <p>Your solution for updating prices within our guild. Contribute to our price guide and keep our information accurate and up-to-date!</p>
         </div>
 
-        <div id="priceFormContainer" class="container">
+        <div id="priceFormContainer">
             <form id="priceForm">
                 <h2>Submit Prices</h2>
                 <label for="productName">Product Name:</label>
                 <input type="text" id="productName" name="productName" required>
-                <br>
                 <label for="productPrice">Price:</label>
                 <input type="number" id="productPrice" name="productPrice" required>
-                <br>
                 <button type="submit">Submit</button>
             </form>
             <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
@@ -123,7 +119,7 @@
             const payload = {
                 embeds: [{
                     title: "New Price Submission",
-                    color: 16711680,
+                    color: 65280,
                     fields: [
                         {
                             name: "Product",
