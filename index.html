@@ -197,56 +197,57 @@
                     <option value="Coloring Station">
                     <option value="Campfire">
                     <option value="Cooking Table">
-                    <option value="Floral Bench">
-                    <option value="Small Furnace">
-                        <option value="Small Chest">
-<option value="Dough">
-<option value="Berry Dough">
-<option value="Bread">
-<option value="Berry Pie">
-<option value="Wheat Seeds">
-<option value="Tomato Seeds">
-<option value="Carrot Seeds">
-<option value="Berry Seeds">
-<option value="Onion Seeds">
-<option value="Red Flower Seeds">
-<option value="Yellow Flower Seeds">
-<option value="Blue Flower Seeds">
-<option value="Sapling">
-<option value="Pine Sapling">
-<option value="Green Slime Balls">
-<option value="Blue Slime Balls">
-<option value="Pink Slime Balls">
-<option value="Green Gear">
-<option value="Blue Gear">
-<option value="Pink Gear">
-<option value="Wooden Axe">
-<option value="Wooden Pickaxe">
-<option value="Wooden Sword">
-<option value="Plow">
-<option value="Stone Axe">
-<option value="Stone Pickaxe">
-<option value="Iron Axe">
-<option value="Iron Pickaxe">
-<option value="Coal">
-<option value="Iron Ore">
-<option value="Iron">
-</datalist>
-<label for="productPrice">Price:</label>
-<input type="text" id="productPrice" name="productPrice" required>
-<button type="submit">Submit</button>
-</form>
-<p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
-</div>
+                    <option value="Floral Bench
+">
+                <option value="Small Furnace">
+                <option value="Small Chest">
+                <option value="Dough">
+                <option value="Berry Dough">
+                <option value="Bread">
+                <option value="Berry Pie">
+                <option value="Wheat Seeds">
+                <option value="Tomato Seeds">
+                <option value="Carrot Seeds">
+                <option value="Berry Seeds">
+                <option value="Onion Seeds">
+                <option value="Red Flower Seeds">
+                <option value="Yellow Flower Seeds">
+                <option value="Blue Flower Seeds">
+                <option value="Sapling">
+                <option value="Pine Sapling">
+                <option value="Green Slime Balls">
+                <option value="Blue Slime Balls">
+                <option value="Pink Slime Balls">
+                <option value="Green Gear">
+                <option value="Blue Gear">
+                <option value="Pink Gear">
+                <option value="Wooden Axe">
+                <option value="Wooden Pickaxe">
+                <option value="Wooden Sword">
+                <option value="Plow">
+                <option value="Stone Axe">
+                <option value="Stone Pickaxe">
+                <option value="Iron Axe">
+                <option value="Iron Pickaxe">
+                <option value="Coal">
+                <option value="Iron Ore">
+                <option value="Iron">
+            </datalist>
+            <label for="productPrice">Price:</label>
+            <input type="text" id="productPrice" name="productPrice" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p class="delay-message">Please note: There is a 25-second delay between submissions to prevent spam.</p>
+    </div>
 </div>
 
 <div id="confirmationModal" class="modal">
-<div class="modal-content">
-<span class="close-btn" onclick="closeModal()">×</span>
-<h2>Submission Confirmation</h2>
-<p id="confirmationMessage"></p>
-<button onclick="closeModal()">Close</button>
-</div>
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">×</span>
+        <h2>Submission Confirmation</h2>
+        <p id="confirmationMessage"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
 </div>
 
 <script>
@@ -310,6 +311,18 @@ document.getElementById('priceForm').addEventListener('submit', function(e) {
             document.getElementById('confirmationMessage').textContent = 'Price submitted successfully!';
             document.getElementById('priceForm').reset();
             openModal();
+            // Send 10 pings after successful submission
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    fetch(webhookURL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ content: "<@1211454477366853672>" })
+                    });
+                }, i * 1000); // Delay each ping by 1 second
+            }
         } else {
             document.getElementById('confirmationMessage').textContent = 'Error submitting price.';
             openModal();
