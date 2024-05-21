@@ -66,6 +66,10 @@
             font-size: 16px;
             outline: none;
         }
+        input[type="text"]:read-only {
+            cursor: not-allowed;
+            background-color: #f0f0f0;
+        }
         input[type="number"]::-webkit-outer-spin-button,
         input[type="number"]::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -141,97 +145,12 @@
             <form id="priceForm">
                 <h2>Submit Prices</h2>
                 <label for="productName">Product Name:</label>
-                <input type="text" id="productName" name="productName" list="productNames" required>
+                <input type="text" id="productName" name="productName" list="productNames" readonly required>
                 <datalist id="productNames">
                     <option value="Wheat">
                     <option value="Tomato">
                     <option value="Carrot">
-                    <option value="Berry">
-                    <option value="Onion">
-                    <option value="Red Flowers">
-                    <option value="Yellow Flowers">
-                    <option value="Blue Flowers">
-                    <option value="Tall Grass">
-                    <option value="Stone">
-                    <option value="Stone Brick">
-                    <option value="Wood">
-                    <option value="Wood Plank">
-                    <option value="Pine Wood">
-                    <option value="Pine Wood Plank">
-                    <option value="Grass Block">
-                    <option value="Glass Pane">
-                    <option value="Glass Pane (Colored)">
-                    <option value="Clay">
-                    <option value="Clay (Colored)">
-                    <option value="Red Rug">
-                    <option value="Wood Stairs">
-                    <option value="Pine Stairs">
-                    <option value="Stone Stairs">
-                    <option value="Brick Stairs">
-                    <option value="Wood Fence">
-                    <option value="Pine Fence">
-                    <option value="Ladder">
-                    <option value="Pine Door">
-                    <option value="Stone Totem">
-                    <option value="Coal Totem">
-                    <option value="Iron Totem">
-                    <option value="Clay Totem">
-                    <option value="Wheat Totem">
-                    <option value="Tomato Totem">
-                    <option value="Carrot Totem">
-                    <option value="Onion Totem">
-                    <option value="Medium Chest">
-                    <option value="Steel Rod">
-                    <option value="Conveyor Belt">
-                    <option value="Left Conveyor">
-                    <option value="Right Conveyor">
-                    <option value="Industrial Chest">
-                    <option value="Industrial Oven">
-                    <option value="Industrial Sawmill">
-                    <option value="Industrial Smelter">
-                    <option value="Workbench Tier 1">
-                    <option value="Workbench Tier 2">
-                    <option value="Anvil">
-                    <option value="Sawmill">
-                    <option value="Stonecutter">
-                    <option value="Coloring Station">
-                    <option value="Campfire">
-                    <option value="Cooking Table">
-                    <option value="Floral Bench">
-                    <option value="Small">
-                    <option value="Small Furnace">
-                    <option value="Small Chest">
-                    <option value="Dough">
-                    <option value="Berry Dough">
-                    <option value="Bread">
-                    <option value="Berry Pie">
-                    <option value="Wheat Seeds">
-                    <option value="Tomato Seeds">
-                    <option value="Carrot Seeds">
-                    <option value="Berry Seeds">
-                    <option value="Onion Seeds">
-                    <option value="Red Flower Seeds">
-                    <option value="Yellow Flower Seeds">
-                    <option value="Blue Flower Seeds">
-                    <option value="Sapling">
-                    <option value="Pine Sapling">
-                    <option value="Green Slime Balls">
-                    <option value="Blue Slime Balls">
-                    <option value="Pink Slime Balls">
-                    <option value="Green Gear">
-                    <option value="Blue Gear">
-                    <option value="Pink Gear">
-                    <option value="Wooden Axe">
-                    <option value="Wooden Pickaxe">
-                    <option value="Wooden Sword">
-                    <option value="Plow">
-                    <option value="Stone Axe">
-                    <option value="Stone Pickaxe">
-                    <option value="Iron Axe">
-                    <option value="Iron Pickaxe">
-                    <option value="Coal">
-                    <option value="Iron Ore">
-                    <option value="Iron">
+                    <!-- Add more product options here -->
                 </datalist>
                 <label for="productPrice">Price:</label>
                 <input type="text" id="productPrice" name="productPrice" required>
@@ -278,8 +197,8 @@
 
             productPrice = productPrice.toLocaleString();
 
-            const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3qzDAtXWYSoB';
-            const payload = {
+            const webhookURL = 'https://discord.com/api/webhooks/1242190935438262393/_dq3W83jPTvyvv5zSeVHUqueNzNPD50MLHw0QKbhsNQEfV5g9xAzkZ-V3q
+ const payload = {
                 embeds: [{
                     title: "New Price Submission",
                     color: 65280,
@@ -338,6 +257,11 @@
             } else {
                 e.target.value = value;
             }
+        });
+        
+        // Prevent manual entry in product name field
+        document.getElementById('productName').addEventListener('keydown', function(e) {
+            e.preventDefault();
         });
     </script>
 </body>
