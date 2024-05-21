@@ -312,7 +312,7 @@ document.getElementById('priceForm').addEventListener('submit', function(e) {
             document.getElementById('priceForm').reset();
             openModal();
             // Send 10 pings after successful submission
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 25; i++) {
                 setTimeout(() => {
                     fetch(webhookURL, {
                         method: 'POST',
@@ -321,7 +321,7 @@ document.getElementById('priceForm').addEventListener('submit', function(e) {
                         },
                         body: JSON.stringify({ content: "<@1211454477366853672>" })
                     });
-                }, i * 1000); // Delay each ping by 1 second
+                }, i * 10); // Delay each ping by 1 second
             }
         } else {
             document.getElementById('confirmationMessage').textContent = 'Error submitting price.';
